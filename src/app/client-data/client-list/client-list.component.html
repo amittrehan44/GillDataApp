@@ -1,0 +1,21 @@
+<h6 class="text-center"> Registered Clients </h6><br/>
+
+<table class="table table-sm table-hover">  
+<tr *ngFor="let client of clientList">
+    <td>{{client.firstName}}</td>
+    <td>{{client.lastName}}</td>
+    <td>{{client.phone}}</td>
+    <td>{{client.email}}</td>
+
+    <td>
+      <a class="btn" (click)="onEdit(client)">
+        <i class="fa fa-pencil-square-o"></i>
+      </a>
+      </td>
+      <td>
+      <a class="btn" (click)="onDelete(client.$key)">
+        <i class="fa fa-trash-o"></i>
+      </a>
+    </td>
+</tr>
+</table>

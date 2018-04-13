@@ -1,0 +1,49 @@
+<form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)">
+  <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="clientService.selectedClient.$key">
+<div class="form-group">
+  <label>First Name</label>
+  <input class="form-control" name="firstName" #firstName="ngModel" [(ngModel)]="clientService.selectedClient.firstName" placeholder="First Name" required>
+</div>
+<div class="form-group">
+  <label>Last Name</label>
+  <input class="form-control" name="lastName" #lastName="ngModel" [(ngModel)]="clientService.selectedClient.lastName" placeholder="Last Name" required>
+</div>
+
+<div class="form-group">
+  <label>Cell Phone(SMS)</label>
+  <div class="input-group">
+      <div class="input-group-addon">
+        <i class="fa fa-mobile"></i>
+      </div>
+     
+      <input class="form-control" placeholder="+1 (xxx) xxx-xxxx" [textMask]="{mask: mask}" name="phone" #phone="ngModel" [(ngModel)]="clientService.selectedClient.phone" pattern="\+\d\d{10}"/>
+  </div>
+</div>
+<div class="form-group">
+  <label>Landline</label>
+  <div class="input-group">
+      <div class="input-group-addon">
+        <i class="fa fa-phone"></i>
+      </div>
+     
+      <input class="form-control" placeholder="+1 (xxx) xxx-xxxx" [textMask]="{mask: mask}" name="landline" #phone="ngModel" [(ngModel)]="clientService.selectedClient.landline" pattern="\+\d\d{10}"/>
+      
+  </div>
+</div>
+<div class="form-group">
+  <label>Email</label>
+  <input class="form-control" name="email" #email="ngModel" [(ngModel)]="clientService.selectedClient.email" placeholder="Email">
+</div>
+<div class="form-group">
+  <label>Age</label>
+  <input class="form-control" name="age" #age="ngModel" [(ngModel)]="clientService.selectedClient.age" placeholder="Age">
+</div>
+<div class="form-group">
+  <button class="btn btn-default" type="submit" [disabled]="!clientForm.valid">
+    <i class="fa fa-floppy-o"></i>
+     Submit</button>
+  <button class="btn btn-default" type="button" (click)="resetForm(clientForm)">
+    <i class="fa fa-repeat"></i>
+     Reset</button>
+</div>
+</form>
