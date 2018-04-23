@@ -5,16 +5,16 @@ import {Client} from '../shared/client.model';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
-  selector: 'app-client-list',
-  templateUrl: './client-list.component.html',
-  styleUrls: ['./client-list.component.css']
+  selector: 'app-client-display',
+  templateUrl: './client-display.component.html',
+  styleUrls: ['./client-display.component.css']
 })
-export class ClientListComponent implements OnInit {
+export class ClientDisplayComponent implements OnInit {
   clientList: Client[];
-
   constructor(private clientService: ClientService, private toastr: ToastrService) { }
 
   ngOnInit() {
+
     var x = this.clientService.getData();
     x.snapshotChanges().subscribe(item => {
       this.clientList = [];
@@ -31,13 +31,6 @@ export class ClientListComponent implements OnInit {
 
   onEdit(client: Client){
     this.clientService.selectedClient = Object.assign({}, client);
-  }
-
-  onDelete(key: string){
-    if(confirm('Are you sure you want to remove this record?')== true){
-      this.clientService.deleteClient(key);
-      this.toastr.warning('Deleted Successfully', 'Client Register');
-    }
   }
 
 

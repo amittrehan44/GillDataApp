@@ -16,6 +16,7 @@ import { NavbarComponent } from './client-data/utils/navbar/navbar.component';
 import { AppRoutingModule } from './/app-routing.module';
 import {ClientService} from './client-data/shared/client.service';
 import {ReactiveClientInputComponent} from './client-data/reactive-client-input/reactive-client-input.component';
+import { ClientDisplayComponent } from './client-data/client-display/client-display.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {ReactiveClientInputComponent} from './client-data/reactive-client-input/
     ClientListComponent,
     ClientInputComponent,
     NavbarComponent,
-    ReactiveClientInputComponent
+    ReactiveClientInputComponent,
+    ClientDisplayComponent
   ],
   imports: [
       BrowserModule,

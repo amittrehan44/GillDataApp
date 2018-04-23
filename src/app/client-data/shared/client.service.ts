@@ -13,32 +13,48 @@ export class ClientService {
     return this.clientList;
   }
 
-  insertClient(client: Client) 
+  insertClient(client: Client): string  
   {
-    this.clientList.push({
+    return this.clientList.push({
       firstName: client.firstName,
       lastName: client.lastName,
       phone: client.phone,
       landline: client.landline,
       email: client.email,
       age: client.age,
-    });
+      gender: client.gender,
+      street1: client.street1,
+      city: client.city,
+      province: client.province,
+      postal: client.postal,
+      lead: 'Victoria Nagar Kirtan',
+      profession: client.profession,
+      notes: client.notes
+    }).key;
   }
 
   updateClient(client: Client) 
   {
     this.clientList.update( client.$key,
       {
-      firstName: client.firstName,
-      lastName: client.lastName,
-      phone: client.phone,
-      landline: client.landline,
-      email: client.email,
-      age: client.age,
+        firstName: client.firstName,
+        lastName: client.lastName,
+        phone: client.phone,
+        landline: client.landline,
+        email: client.email,
+        age: client.age,
+        gender: client.gender,
+        street1: client.street1,
+        city: client.city,
+        province: client.province,
+        postal: client.postal,
+        lead: 'Victoria Nagar Kirtan',
+        profession: client.profession,
+        notes: client.notes
     });
   }
 
-  deleteEmployee($key: string){
+  deleteClient($key: string){
     this.clientList.remove($key);
   }
 

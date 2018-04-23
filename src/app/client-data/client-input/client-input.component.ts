@@ -38,12 +38,20 @@ export class ClientInputComponent implements OnInit {
       clientForm.reset();
     this.clientService.selectedClient = {
       $key: null,
-      firstName: '',
-      lastName: '',
-      phone: '',
-      landline: '',
-      email: '',
-      age: ''
+      firstName: ' ',
+      lastName: ' ', 
+      phone: ' ',
+      landline: ' ',
+      email: ' ',
+      age: ' ',
+      gender: ' ',
+      street1: '',
+      city: '',
+      province: '',
+      postal: '',
+      lead: 'Victoria NagarKirtan',
+      profession: '',
+      notes: ''
 
     }
 

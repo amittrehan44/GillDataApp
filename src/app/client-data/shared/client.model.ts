@@ -6,5 +6,13 @@ export class Client {
     landline: string;
     email: string;
     age: string;
+    gender: string;
+    street1: string;
+    city: string;
+    province: string;
+    postal: string;
+    lead: string;
+    profession: string;
+    notes: string;
 
 }
