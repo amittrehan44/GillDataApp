@@ -5,12 +5,18 @@ import { Client } from './client.model';
 @Injectable()
 export class ClientService {
   clientList: AngularFireList<any>;
+  clientAppointmentsList: AngularFireList<any>;
   selectedClient: Client = new Client();
   constructor(private firebase : AngularFireDatabase) { }
 
   getData(){
     this.clientList = this.firebase.list('clients');
     return this.clientList;
+  }
+
+  getClientAppData(){
+    this.clientAppointmentsList = this.firebase.list('clientAppointments');
+    return this.clientAppointmentsList;
   }
 
   insertClient(client: Client): string  
@@ -31,6 +37,13 @@ export class ClientService {
       profession: client.profession,
       notes: client.notes
     }).key;
+  }
+
+  insertNewClientInClientApp(client: string) 
+  {
+    this.clientAppointmentsList.push({
+      clientKey: client
+    });
   }
 
   updateClient(client: Client) 

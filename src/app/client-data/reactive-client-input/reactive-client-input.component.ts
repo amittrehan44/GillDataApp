@@ -37,7 +37,7 @@ pageTitle: string = 'GILL INSURANCE AGENCY INC.';
 
   ngOnInit() {
       this.clientService.getData();
-
+      this.clientService.getClientAppData();
       this.customerForm = this.fb.group({
           firstName: ['', [Validators.required, Validators.minLength(3)]],
           lastName: ['', [Validators.maxLength(50)]],
@@ -45,7 +45,7 @@ pageTitle: string = 'GILL INSURANCE AGENCY INC.';
           phone: ['', [Validators.pattern('[0-9+]{12}')]],
           landline: ['', [Validators.pattern('[0-9+]{12}')]],
           age: '',
-          $key: '',
+          $key: null,
           gender: '',
           street1: '',
           city: '',
@@ -84,6 +84,24 @@ pageTitle: string = 'GILL INSURANCE AGENCY INC.';
   resetForm(customerForm?: FormGroup) {
    
     //customerForm.reset();
+    this.customerForm.patchValue({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      landline: '',
+      age: '',
+      $key: null,
+      gender: '',
+      street1: '',
+      city: '',
+      province: 'BC',
+      postal: '',
+      lead: '',
+      profession: '',
+      notes: ''
+
+    }); 
     this.clientService.selectedClient = {
         $key: null,
         firstName: ' ',
@@ -111,12 +129,13 @@ pageTitle: string = 'GILL INSURANCE AGENCY INC.';
 
     if(this.customerForm.value.$key == null || this.customerForm.value.$key == ''){
       var k = this.clientService.insertClient(this.clientService.selectedClient);
+      this.clientService.insertNewClientInClientApp(k);
     }
     else{
       this.clientService.updateClient(this.clientService.selectedClient);
     }
      this.resetForm(this.customerForm);
-     //this.router.navigate(['/welcome']);
+     this.router.navigate(['/Register']);
      this.toastr.success('Submitted Succcessfully', 'Client');
   }
 

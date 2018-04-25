@@ -24,5 +24,6 @@ input.ng-invalid.ng-dirty{
 }
 
 .greenClass {
-    background-color: hsl(147, 100%, 65%) !important;
+    background-color: #fc8a96 !important;
+    text-align: left !important;
 }
